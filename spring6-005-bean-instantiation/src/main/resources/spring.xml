@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <bean class="com.spring.bean.DateFactoryBean" id="date">
+        <constructor-arg index="0" value="2021-10-11"/>
+    </bean>
+    <bean class="java.util.Date" id="nt"/>
+    <bean class="com.spring.bean.Student" id="student">
+        <!--<property name="birth" value="Mon Oct 10 14:30:26 CST 2022"/>-->
+        <!--<property name="birth" ref="nt"/>-->
+        <property name="birth" ref="date"/>
+    </bean>
+    <bean class="com.spring.bean.SpringBean" id="sb"/>
+    <bean id="start" class="com.spring.bean.StartFactory" factory-method="get"/>
+    <bean id="gunFactory" class="com.spring.bean.GunFactory"/>
+    <bean id="gun" factory-bean="gunFactory" factory-method="get"/>
+    <bean id="person" class="com.spring.bean.PersonFactoryBean"/>
+</beans>

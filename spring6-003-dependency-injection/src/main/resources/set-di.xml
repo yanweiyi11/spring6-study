@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <bean class="com.spring.bean.MathBean" id="mathBean">
+        <!--方案一：采用实体符代替-->
+        <!--<property name="result" value="2 &lt; 3"/>-->
+        <!--方案二：使用CDATA-->
+        <property name="result">
+            <!--只能使用value标签-->
+            <value><![CDATA[2 < 3]]></value>
+        </property>
+    </bean>
+    <bean class="com.spring.bean.Cat" id="cat">
+        <!--需要注入null，可以不注入或者使用null标签-->
+        <!--如果使用"null"，那注入的是null这个字符串-->
+        <!--<property name="name" value="tom"/>-->
+        <!--<property name="name">-->
+        <!--    <null/>-->
+        <!--</property>-->
+        <!--<property name="name" value=""/>-->
+        <property name="name">
+            <value/>
+        </property>
+        <property name="age" value="3"/>
+    </bean>
+    <bean class="com.spring.jdbc.MyDataSource" id="myDataSource">
+        <property name="driver" value="com.mysql.cj.jdbc.Driver"/>
+        <property name="url" value="jdbc:mysql:///test"/>
+        <property name="username" value="root"/>
+        <property name="password" value="123456"/>
+    </bean>
+    <bean class="com.spring.bean.SimpleValueType" id="simpleValueType">
+        <property name="age" value="20"/>
+        <property name="age2" value="21"/>
+        <property name="username" value="zs"/>
+        <property name="season" value="SPRING"/>
+        <property name="flag" value="false"/>
+        <property name="flag2" value="true"/>
+        <property name="c" value="男"/>
+        <property name="c2" value="女"/>
+        <property name="clazz" value="java.lang.String"/>
+        <!--报错，字符串无法转换为Date类型-->
+        <!--如果要把Date类型当作简单类型，使用value赋值这个字符串格式有要求-->
+        <property name="date" value="Sat Aug 05 10:19:13 CST 2023"/>
+    </bean>
+    <bean class="com.spring.bean.User" id="user">
+        <!--简单类型赋值不能用ref，要用value-->
+        <property name="username" value="zs"/>
+        <property name="password" value="123"/>
+        <property name="age" value="20"/>
+    </bean>
+    <bean class="com.spring.dao.OtherDao" id="otherDao"/>
+    <bean class="com.spring.service.OtherService" id="otherService">
+        <property name="otherDao" ref="otherDao"/>
+    </bean>
+    <bean class="com.spring.service.OtherService" id="otherService2">
+        <property name="otherDao">
+            <bean class="com.spring.dao.OtherDao"/>
+        </property>
+    </bean>
+</beans>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean class="com.spring.dao.VipDao"/>
+    <bean class="com.spring.dao.UserDao"/>
+    <bean class="com.spring.service.CustomerService" id="customerService" autowire="byType"/>
+
+    <!--根据名字自动装配，被注入的对象的bean的id不能随便写，要写set方法名去掉set，剩下单词首字母小写-->
+    <bean class="com.spring.dao.OtherDao" id="otherDao"/>
+
+    <!--自动装配也是基于set方式实现的-->
+    <bean class="com.spring.service.OtherService" id="otherService" autowire="byName"/>
+
+    <!--<bean class="com.spring.dao.OtherDao" id="otherDao"/>-->
+
+    <!--<bean class="com.spring.service.OtherService" id="otherService">-->
+    <!--    <property name="otherDao" ref="otherDao"/>-->
+    <!--</bean>-->
+</beans>

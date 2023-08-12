@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean class="com.spring.bean.Student" id="student">
+        <property name="name" value="张三"/>
+        <property name="clazz" ref="clazz"/>
+        <property name="clazz.name" value="高三二班"/>
+    </bean>
+
+    <bean class="com.spring.bean.Clazz" id="clazz"/>
+
+    <!--<bean class="com.spring.bean.Clazz" id="clazz">-->
+    <!--    <property name="name" value="高三一班"/>-->
+    <!--</bean>-->
+</beans>

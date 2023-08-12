@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean class="com.spring.bean.Woman" id="w1">
+        <property name="name" value="xh"/>
+    </bean>
+    <bean class="com.spring.bean.Woman" id="w2">
+        <property name="name" value="xq"/>
+    </bean>
+    <bean class="com.spring.bean.Woman" id="w3">
+        <property name="name" value="xm"/>
+    </bean>
+    <bean class="com.spring.bean.QianDaYe" id="qianDaYe">
+        <property name="aiHaos">
+            <array>
+                <value>aa</value>
+                <value>bb</value>
+                <value>cc</value>
+            </array>
+        </property>
+        <property name="womens">
+            <array>
+                <ref bean="w1"/>
+                <ref bean="w2"/>
+                <ref bean="w3"/>
+            </array>
+        </property>
+    </bean>
+
+</beans>

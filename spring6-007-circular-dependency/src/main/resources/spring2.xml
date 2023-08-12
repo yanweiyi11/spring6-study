@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean class="com.spring.bean2.Husband" id="husband" scope="prototype">
+        <constructor-arg index="0" value="张三"/>
+        <constructor-arg index="1" ref="wife"/>
+    </bean>
+    <bean class="com.spring.bean2.Wife" id="wife" scope="prototype">
+        <constructor-arg index="0" value="小芳"/>
+        <constructor-arg index="1" ref="husband"/>
+    </bean>
+
+</beans>

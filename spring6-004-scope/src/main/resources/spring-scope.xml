@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean class="org.springframework.beans.factory.config.CustomScopeConfigurer">
+        <!--如果有新的自定义作用域需要配置，可以加多一个entry，key为作用域的名字，里面需要配置一个内部bean，这个bean需要实现scope接口-->
+        <property name="scopes">
+            <map>
+                <entry key="threadScope">
+                    <bean class="org.springframework.context.support.SimpleThreadScope"/>
+                </entry>
+            </map>
+        </property>
+    </bean>
+
+    <bean class="com.spring.bean.SpringBean" id="sb" scope="singleton"/>
+</beans>

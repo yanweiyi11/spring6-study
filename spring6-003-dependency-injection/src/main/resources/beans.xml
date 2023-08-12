@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <bean class="com.spring.dao.UserDao" id="userDao"/>
+    <bean class="com.spring.dao.VipDao" id="vipDao"/>
+    <!--
+    index属性指定参数下标：
+    第一个参数是0，第二个参数是1
+    ref属性用来指定注入bean的id
+    -->
+    <bean class="com.spring.service.CustomerService" id="customerService">
+        <!--根据构造方法的位置下标注入-->
+        <constructor-arg index="0" ref="userDao"/>
+        <constructor-arg index="1" ref="vipDao"/>
+    </bean>
+    <bean class="com.spring.service.CustomerService" id="customerService2">
+        <!--根据构造方法参数名注入-->
+        <constructor-arg name="userDao" ref="userDao"/>
+        <constructor-arg name="vipDao" ref="vipDao"/>
+    </bean>
+    <bean class="com.spring.service.CustomerService" id="customerService3">
+        <!--
+        不指定下标也不指定参数名，让spring自己做类型匹配
+        这种方式实际上是根据类型进行注入的，spring会自动根据类型来判断
+        把ref注入给哪个参数
+        -->
+        <constructor-arg ref="userDao"/>
+        <constructor-arg ref="vipDao"/>
+    </bean>
+</beans>
